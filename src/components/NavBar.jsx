@@ -1,6 +1,6 @@
 export const NavBar = () => {
     return (
-        <nav> 
+        <nav className='navBar'> 
             <a href ='#'>Store</a>
             <a href ='#'>Inicio</a>
             <a href ='#'>Zapatillas</a>
