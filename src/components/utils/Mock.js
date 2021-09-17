@@ -19,8 +19,17 @@ export const fetch = new Promise ((res,rej) =>{
     if(respuesta === '200'){
         setTimeout(()=>{
             res(productosDeLaApi)
-        },3000)
+        },2000)
     }else{
         rej('404')
     }
+})
+
+const productoDeLaApi =  {id : 9, titulo: "Botines Puma Ultra", descripcion: "Los botines Puma Ultra 4.2 TT BADP están confeccionados en materiales sintéticos para una mayor resistencia" , precio: '$9299' , fotoUrl : "https://www.dexter.com.ar/on/demandware.static/-/Sites-dabra-catalog/default/dw135269a8/products/PU_106643-03/PU_106643-03-1.JPG"}
+
+export const fetchUno = new Promise ((resolve) =>{
+    
+    setTimeout(() =>{
+        resolve(productoDeLaApi)
+    },2000)
 })
