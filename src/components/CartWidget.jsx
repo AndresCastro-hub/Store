@@ -3,7 +3,7 @@ import {FaShoppingCart} from 'react-icons/fa'
 function CartWidget() {
     return (
         <>
-            <FaShoppingCart/>
+            <FaShoppingCart style={{color:'white' ,cursor:'pointer'}}/>
         </>
     )
 }

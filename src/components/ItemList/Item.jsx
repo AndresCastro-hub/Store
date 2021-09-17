@@ -7,7 +7,7 @@ import Col from 'react-bootstrap/Col'
 
 const  Item = ({productosDeLaApi})  => {
     return (
-        <Card style={{ width: '18rem'}} key = {productosDeLaApi.id}>
+        <Card style={{ width: '18rem' , border:'1px solid'}} key = {productosDeLaApi.id}>
         <Card.Img variant="top" src={productosDeLaApi.fotoUrl}/>
         <Card.Body>
             <Card.Title style={{textAlign:"center"}}> {productosDeLaApi.titulo}</Card.Title>
@@ -15,7 +15,7 @@ const  Item = ({productosDeLaApi})  => {
             {productosDeLaApi.descripcion}
             <Card.Title style={{textAlign:"center", marginTop:'10px'}}> {productosDeLaApi.precio}</Card.Title>
         </Card.Text>
-            <Button style={{marginLeft:'85px'}} variant="dark">Detalles</Button>
+            <Button style={{marginLeft:'85px',backgroundColor:'black'}}>Detalles</Button>
         </Card.Body>
         </Card>
     )

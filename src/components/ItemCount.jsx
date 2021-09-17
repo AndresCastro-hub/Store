@@ -39,9 +39,9 @@ const ItemCount = ({stock , initial , onAdd}) => {
             </Row>
             
             <Row className = "justify-content-md-center">
-            <Button variant="danger" onClick ={sumar}>+</Button>{' '}
-            <Button variant="danger" onClick ={agregarCarrito}>Agregar al carrito</Button>{' '}
-            <Button variant="danger" onClick ={restar}>-</Button>{' '}
+            <Button variant="dark" onClick ={sumar}>+</Button>{' '}
+            <Button variant="dark" onClick ={agregarCarrito}>Agregar al carrito</Button>{' '}
+            <Button variant="dark" onClick ={restar}>-</Button>{' '}
             </Row>
             
         </Container>

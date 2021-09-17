@@ -1,0 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
+
+.titulo{
+    text-align: center;
+    margin: 20px 30px;
+    font-size: 50px;
+    font-family: 'Lobster', cursive;
+}
+
