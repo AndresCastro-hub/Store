@@ -55,6 +55,9 @@ function NavBar() {
 
       </Navbar.Collapse>
     </Navbar>
+
+    <h2 className='titulo'>Nike Store</h2>
+
   </>
   )
 }

@@ -42,7 +42,7 @@ function ItemListContainer({greeting}) {
         
         { loading ? <h2>Cargando...</h2> : <ItemList productosDeLaApi = {productosDeLaApi}/> }
 
-        <ItemCount stock ={5} initial ={1} onAdd ={onAdd}/>
+        {/* <ItemCount stock ={5} initial ={1} onAdd ={onAdd}/> */}
 
         </div>
     )    

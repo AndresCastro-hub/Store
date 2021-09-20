@@ -1,22 +1,34 @@
 import Card from 'react-bootstrap/Card'
 import Button from 'react-bootstrap/Button'
+import ItemCount from '../ItemCount'
 
-function ItemDetail({producto}) {
+const onAdd = (cantidad) => {
+    console.log(cantidad)
+}
+
+function ItemDetail({item}) {
     return (
-        <div style = {{display:'flex', justifyContent:'center', alignItems:'center'}}>
-            <Card style={{ width: '50%'}} key = {producto.id}>
-        <Card.Img variant="top" src={producto.fotoUrl}/>
-        <Card.Body>
-            <Card.Title style={{textAlign:"center"}}> {producto.titulo}</Card.Title>
+        <div style = {{marginTop:'30px', display:'flex', alignItems:'center' , justifyContent:'center'}}>
+            <Card style={{width:'40%'}} key = {item.id}>
+        <Card.Img variant="top" src={item.fotoUrl}/>
+        <Card.Body style={{textAlign:"center"}}>
+            <Card.Title > {item.titulo}</Card.Title>
         <Card.Text>
-            {producto.descripcion}
-            <Card.Title style={{textAlign:"center", marginTop:'10px'}}> {producto.precio}</Card.Title>
+            {item.descripcion}
+            <Card.Title style={{marginTop:'10px'}}> {item.precio}</Card.Title>
         </Card.Text>
-            <Button style={{marginLeft:'44%'}} variant="dark">Detalles</Button>
+            <Button variant="dark">Detalles</Button>
         </Card.Body>
+
+        <div>
+            <ItemCount stock ={5} initial ={1} onAdd ={onAdd} />
+        </div>
+
         </Card> 
         </div>
-      
+
+        
+        
     )
 }
 

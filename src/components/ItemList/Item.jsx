@@ -10,18 +10,18 @@ const  Item = ({productosDeLaApi})  => {
     return (
         <Card style={{ width: '18rem' , border:'1px solid'}} key = {productosDeLaApi.id}>
         <Card.Img variant="top" src={productosDeLaApi.fotoUrl}/>
-        <Card.Body>
-            <Card.Title style={{textAlign:"center"}}> {productosDeLaApi.titulo}</Card.Title>
+        <Card.Body style={{textAlign:"center"}}>
+            <Card.Title> {productosDeLaApi.titulo}</Card.Title>
         <Card.Text>
             {productosDeLaApi.descripcion}
-            <Card.Title style={{textAlign:"center", marginTop:'10px'}}> {productosDeLaApi.precio}</Card.Title>
+            <Card.Title style={{marginTop:'10px'}}> {productosDeLaApi.precio}</Card.Title>
         </Card.Text>
         <Card.Text>
-            <Button style={{marginLeft:'50px', backgroundColor:'black', border:'none'}}>Agregar al carrito</Button>
+            <Button style={{backgroundColor:'black', border:'none'}}>Agregar al carrito</Button>
         </Card.Text>
             
         <Link to = {`/item/${productosDeLaApi.id}`}>
-            <Button style={{marginLeft:'85px',backgroundColor:'blue'}}>Detalles</Button>
+            <Button style={{backgroundColor:'blue'}}>Detalles</Button>
         </Link>
 
         </Card.Body>
