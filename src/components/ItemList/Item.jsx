@@ -4,6 +4,7 @@ import Button from 'react-bootstrap/Button'
 import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
+import {Link} from 'react-router-dom'
 
 const  Item = ({productosDeLaApi})  => {
     return (
@@ -15,7 +16,14 @@ const  Item = ({productosDeLaApi})  => {
             {productosDeLaApi.descripcion}
             <Card.Title style={{textAlign:"center", marginTop:'10px'}}> {productosDeLaApi.precio}</Card.Title>
         </Card.Text>
-            <Button style={{marginLeft:'85px',backgroundColor:'black'}}>Detalles</Button>
+        <Card.Text>
+            <Button style={{marginLeft:'50px', backgroundColor:'black', border:'none'}}>Agregar al carrito</Button>
+        </Card.Text>
+            
+        <Link to = {`/item/${productosDeLaApi.id}`}>
+            <Button style={{marginLeft:'85px',backgroundColor:'blue'}}>Detalles</Button>
+        </Link>
+
         </Card.Body>
         </Card>
     )

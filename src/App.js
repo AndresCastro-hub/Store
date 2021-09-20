@@ -3,15 +3,28 @@ import ItemListContainer from './components/ItemList/ItemListContainer';
 import NavBar from './components/NavBar/NavBar'
 import ItemDetailContainer from './components/ItemDetail/ItemDetailContainer'
 import AppCss from './App.css'
+import {BrowserRouter, Switch , Route} from 'react-router-dom'
+
 
 
 function App() {
   return (
     <>
-    <NavBar/>
-    <h2 className='titulo'>Nike Store</h2>
-    <ItemListContainer/>
-    <ItemDetailContainer/>
+      <BrowserRouter>
+    
+        <NavBar/>
+
+          <Switch>
+          
+            <Route exact path='/' component = {ItemListContainer}/>
+
+            <Route path = '/categoria/:idCategoria' component={ItemListContainer}/>
+           
+            <Route exact path ='/item/:id' component = {ItemDetailContainer}/>
+      
+          </Switch>
+
+      </BrowserRouter>
     </>
   );
   
