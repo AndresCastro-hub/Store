@@ -7,6 +7,7 @@ const ItemDetailContainer = () => {
 
     const [item, setItem] = useState()
     const {id} = useParams()
+   
 
     useEffect(() => {
         
@@ -14,20 +15,21 @@ const ItemDetailContainer = () => {
         .then ((res) => {
             if(id){
                 const itemFiltrado = res.filter ((item) => item.id === parseInt(id))
-                
+        
                 setItem(itemFiltrado)
-            }else{
-                setItem(res)
+            }
+            else{
+                setItem(res)                
             } 
+          
         })
-        .catch(error => console.log(error))
-
+        
     }, [id])
 
     return (
         <> 
         {
-            item && <ItemDetail key = {item[0].id} item={item[0]}/>
+          item && <ItemDetail key = {item[0].id} item={item[0]}/>
         }
             
         </>

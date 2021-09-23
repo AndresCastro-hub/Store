@@ -17,7 +17,7 @@ const  Item = ({productosDeLaApi})  => {
             <Card.Title style={{marginTop:'10px'}}> {productosDeLaApi.precio}</Card.Title>
         </Card.Text>
         <Card.Text>
-            <Button style={{backgroundColor:'black', border:'none'}}>Agregar al carrito</Button>
+            {/* <Button style={{ backgroundColor:'black', border:'none'}}>Agregar al carrito</Button> */}
         </Card.Text>
             
         <Link to = {`/item/${productosDeLaApi.id}`}>

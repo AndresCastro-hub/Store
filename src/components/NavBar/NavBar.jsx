@@ -45,13 +45,15 @@ function NavBar() {
           <NavDropdown.Item style={{color:'white'}} href="#action/3.4">Botines</NavDropdown.Item>
         </Link>
 
+
         </NavDropdown >
         
       </Nav>
     
-        <Link  to = '/cart'>
+      <Link  to = '/cart'>
           <CartWidget/>
         </Link>
+     
 
       </Navbar.Collapse>
     </Navbar>

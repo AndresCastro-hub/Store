@@ -12,9 +12,9 @@ function ItemListContainer({greeting}) {
     const [loading, setLoading] = useState(true)
     const {idCategoria} = useParams()
     
-    const onAdd = (cantidad) => {
-        console.log(cantidad)
-    }
+    // const onAdd = (cantidad) => {
+    //     console.log(cantidad)
+    // }
 
     useEffect(() => {
 
