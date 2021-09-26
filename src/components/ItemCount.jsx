@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom'
 const ItemCount = ({stock , initial , onAdd}) => {
 
     const [count, setCount] = useState(initial)
-    const [cambiarBoton , setCambiarBoton] = useState(true)
+    // const [cambiarBoton , setCambiarBoton] = useState(true)
 
     function sumar() {
         if(count < stock){
@@ -25,7 +25,7 @@ const ItemCount = ({stock , initial , onAdd}) => {
 
     const agregarCarrito = () => {
         onAdd(count)
-        setCambiarBoton(false)
+        // setCambiarBoton(false)
     }
 
    
@@ -49,24 +49,25 @@ const ItemCount = ({stock , initial , onAdd}) => {
             
             <Row className = "justify-content-md-center">
                 
-                { cambiarBoton ?
+                {/* { cambiarBoton ? */}
 
-                 <Button  style ={{marginTop:'10px' ,backgroundColor:'black' , borderStyle: 'none'}} onClick ={agregarCarrito}>Agregar al carrito</Button>
-                 :
+                <Button  style ={{marginTop:'10px' ,backgroundColor:'black' , borderStyle: 'none'}} onClick ={agregarCarrito}>Agregar al carrito</Button>
+                
+                
                 
                 <>
-                 
+{/*                  
                  <Link to = '/cart'>
                     <Button variant="primary" style ={{marginTop:'20px'}}>Finalizar pedido</Button>
                 </Link>
 
                 <Link to = '/'>
                     <Button variant="dark" style ={{marginTop:'20px', marginLeft:'15px'}}>Seguir Comprando</Button>
-                </Link>
+                </Link> */}
 
                 </>
                  
-                }
+                
 
             </Row>
             

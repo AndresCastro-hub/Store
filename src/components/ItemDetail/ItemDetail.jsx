@@ -1,17 +1,24 @@
 import Card from 'react-bootstrap/Card'
 import Button from 'react-bootstrap/Button'
+import Row from'react-bootstrap/Row'
 import ItemCount from '../ItemCount'
 import {useState} from 'react'
+import { Link } from 'react-router-dom'
+
 
 
 function ItemDetail({item}) {
 
     const [cantidadSeleccionada, setCantidadSeleccionada ] = useState(0)
+    const [ocultarItemCount, setOcultarItemCount] = useState(true)
 
     const onAdd = (cantidad) => {
         console.log(cantidad)
         setCantidadSeleccionada(cantidad)
+        setOcultarItemCount(false)
     }
+
+    
 
     return (
         <div style = {{marginTop:'30px', display:'flex', alignItems:'center' , justifyContent:'center'}}>
@@ -26,7 +33,27 @@ function ItemDetail({item}) {
             
         <Button variant="dark">Detalles</Button>
 
-        <ItemCount stock ={5} initial ={1} onAdd ={onAdd} />
+
+        <Row className = "justify-content-md-center">
+
+        {
+            ocultarItemCount ?
+                <ItemCount stock ={5} initial ={1} onAdd ={onAdd} />
+            :
+            <>
+                 <Link to = '/cart'>
+                    <Button variant="primary" style ={{marginTop:'20px'}}>Finalizar pedido</Button>
+                </Link>
+
+                <Link to = '/'>
+                    <Button variant="dark" style ={{marginTop:'20px', marginLeft:'15px'}}>Seguir Comprando</Button>
+                </Link>
+            </>
+        }
+         </Row>
+
+        {/* <ItemCount stock ={5} initial ={1} onAdd ={onAdd} /> */}
+      
 
         </Card.Body>
 
