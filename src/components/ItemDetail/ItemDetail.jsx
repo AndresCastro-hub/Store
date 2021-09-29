@@ -2,25 +2,35 @@ import Card from 'react-bootstrap/Card'
 import Button from 'react-bootstrap/Button'
 import Row from'react-bootstrap/Row'
 import ItemCount from '../ItemCount'
-import {useState} from 'react'
+import {useState, useContext} from 'react'
+import { ContextApp } from '../../App'
 import { Link } from 'react-router-dom'
+import {useCartContext} from '../../context/cartContext'
 
 
 
-function ItemDetail({item}) {
+const ItemDetail = ({item}) => {
 
     const [cantidadSeleccionada, setCantidadSeleccionada ] = useState(0)
     const [ocultarItemCount, setOcultarItemCount] = useState(true)
 
+    const {addToCart} = useCartContext()
+    
+    const {state} = useContext(ContextApp)
+
     const onAdd = (cantidad) => {
         console.log(cantidad)
-        setCantidadSeleccionada(cantidad)
+
+        addToCart({item , cantidad})
+
         setOcultarItemCount(false)
     }
 
-    
+    console.log(addToCart)
+
 
     return (
+        
         <div style = {{marginTop:'30px', display:'flex', alignItems:'center' , justifyContent:'center'}}>
             <Card style={{width:'40%'}} key = {item.id}>
         <Card.Img variant="top" src={item.fotoUrl}/>

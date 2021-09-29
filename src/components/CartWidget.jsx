@@ -4,8 +4,7 @@ function CartWidget() {
     return (
         <>
             <FaShoppingCart style={{color:'white' ,cursor:'pointer'}}/>
-        
-           
+
         </>
     )
 }

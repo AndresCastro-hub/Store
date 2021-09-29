@@ -6,13 +6,19 @@ import AppCss from './App.css'
 import {BrowserRouter, Switch , Route} from 'react-router-dom'
 import CartWidget from './components/CartWidget';
 import Cart from './components/Cart/Cart';
+import {useState, createContext} from 'react'
+import CartContextProvider from './context/cartContext'
+
+export const ContextApp = createContext('')
 
 
 
 function App() {
+
   return (
     <>
-      <BrowserRouter>
+      <CartContextProvider>
+        <BrowserRouter>
     
         <NavBar/>
 
@@ -30,7 +36,8 @@ function App() {
       
           </Switch>
 
-      </BrowserRouter>
+        </BrowserRouter>
+      </CartContextProvider>
     </>
   );
   
