@@ -40,7 +40,12 @@ export default function CartContextProvider ({children}){
 
     const clearCart = () => setCartList([]);
 
-    console.log(cartList)
+   
+    const precioTotal =()=>{
+        return cartList.reduce((acum, valor)=>(acum + (valor.cantidad * valor.item.precio)), 0) 
+     }
+    
+     console.log(precioTotal)
 
     return (
         <cartContext.Provider value = {{
@@ -48,7 +53,8 @@ export default function CartContextProvider ({children}){
             addToCart,
             removeItem,
             iconCart,
-            clearCart
+            clearCart,
+            precioTotal,
         }}>
             {children}
         </cartContext.Provider>

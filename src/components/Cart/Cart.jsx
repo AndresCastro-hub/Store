@@ -1,17 +1,24 @@
-import React from 'react'
+import {useState}from 'react'
 import { useCartContext } from '../../context/cartContext'
 import Card from 'react-bootstrap/Card'
 import Button from 'react-bootstrap/Button'
+import {Link} from 'react-router-dom'
 
 const Cart = () => {
 
-    const {cartList,removeItem,clearCart} = useCartContext()
+    const {cartList,removeItem,clearCart,precioTotal} = useCartContext()
 
+   
+    console.log(precioTotal)
+    
     return(
         
         <>
+        {cartList.length === 0 ? <h2 className= "text-center text-dark">Su carrito esta vacio..</h2>
 
-        {cartList.map(item => 
+         :
+
+        cartList.map(item => 
 
         <Card key={item.id} style={{width: '18rem', margin:'30px 50px'}}>
             <Card.Body>
@@ -26,18 +33,46 @@ const Cart = () => {
 
                 <div style={{display:'flex', alignItems:'center' , justifyContent:'center'}}>
                     <Button variant="danger"  onClick={() => removeItem(item)}>Eliminar producto</Button> 
-                </div>
+                </div>                
                  
             </Card.Body>
+            
         </Card>
-        )}
+        
 
+        
+        )}
+        
+
+        {cartList.length === 0 ? 
+          
         <div style= {{display:'flex', alignItems:'center' , justifyContent:'center' , marginBottom:'10px'}} >
-            <Button variant="primary"  onClick={() => clearCart(cartList)}>Vaciar Carrito</Button>
+            
+            <Link to = '/'>
+                <Button variant="primary mt-2">Volver al inicio</Button>
+            </Link>
         </div>
 
+        :
+        <>
+
+        <h2 className='ml-5'>Precio Total: {() => precioTotal}</h2>
+
+        <div style= {{display:'flex', alignItems:'center' , justifyContent:'center' , marginBottom:'10px'}} >
+            <Button variant="danger"  onClick={() => clearCart(cartList)}>Vaciar Carrito</Button>
+        </div>
+
+        
+        
         </>
+    
+        }
+         
+        </>
+
+       
     )
 }
+
 
 export default Cart

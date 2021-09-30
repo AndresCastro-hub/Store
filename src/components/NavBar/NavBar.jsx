@@ -55,7 +55,6 @@ function NavBar() {
       </Nav>
     
       <Link  to = '/cart'>
-        {iconCart()}
           <CartWidget/>
         </Link>
      
