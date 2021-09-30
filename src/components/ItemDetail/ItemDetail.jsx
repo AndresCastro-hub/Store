@@ -21,7 +21,7 @@ const ItemDetail = ({item}) => {
     const onAdd = (cantidad) => {
         console.log(cantidad)
 
-        addToCart({item , cantidad})
+        addToCart(item , cantidad)
 
         setOcultarItemCount(false)
     }
@@ -41,9 +41,6 @@ const ItemDetail = ({item}) => {
             <Card.Title style={{marginTop:'10px'}}> {item.precio}</Card.Title>
         </Card.Text>
             
-        <Button variant="dark">Detalles</Button>
-
-
         <Row className = "justify-content-md-center">
 
         {

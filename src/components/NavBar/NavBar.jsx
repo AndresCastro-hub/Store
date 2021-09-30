@@ -7,8 +7,12 @@ import Button from 'react-bootstrap/Button'
 import CartWidget from '../CartWidget'
 import css from './nav.css'
 import { Link } from 'react-router-dom'
+import {useCartContext} from '../../context/cartContext'
 
 function NavBar() {
+
+  const {iconCart} = useCartContext()
+
   return (
   <>
     <Navbar expand="lg">
@@ -51,6 +55,7 @@ function NavBar() {
       </Nav>
     
       <Link  to = '/cart'>
+        {iconCart()}
           <CartWidget/>
         </Link>
      
