@@ -21,10 +21,7 @@ function CartWidget() {
              {iconCart() }
         </>
         
-        
-         
         }
-        
             
         </>
     )

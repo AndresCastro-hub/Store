@@ -8,8 +8,8 @@ const Cart = () => {
 
     const {cartList,removeItem,clearCart,precioTotal} = useCartContext()
 
-   
-    console.log(precioTotal)
+//    console.log(typeof(precioTotal))
+    
     
     return(
         
@@ -36,11 +36,10 @@ const Cart = () => {
                 </div>                
                  
             </Card.Body>
-            
+           
         </Card>
         
 
-        
         )}
         
 
@@ -56,7 +55,7 @@ const Cart = () => {
         :
         <>
 
-        <h2 className='ml-5'>Precio Total: {() => precioTotal}</h2>
+        <h2 className='ml-5'>Precio Total: {precioTotal}</h2>
 
         <div style= {{display:'flex', alignItems:'center' , justifyContent:'center' , marginBottom:'10px'}} >
             <Button variant="danger"  onClick={() => clearCart(cartList)}>Vaciar Carrito</Button>
@@ -70,8 +69,10 @@ const Cart = () => {
          
         </>
 
+
        
     )
+    
 }
 
 

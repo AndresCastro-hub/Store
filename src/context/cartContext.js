@@ -41,11 +41,15 @@ export default function CartContextProvider ({children}){
     const clearCart = () => setCartList([]);
 
    
+    
     const precioTotal =()=>{
         return cartList.reduce((acum, valor)=>(acum + (valor.cantidad * valor.item.precio)), 0) 
-     }
+    }
+
+
+     console.log(typeof(precioTotal))
     
-     console.log(precioTotal)
+   
 
     return (
         <cartContext.Provider value = {{
