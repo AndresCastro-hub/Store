@@ -2,34 +2,29 @@ import {useState, useEffect} from 'react'
 import {fetch} from '../utils/Mock'
 import ItemDetail from './ItemDetail'
 import {useParams} from 'react-router-dom'
+import { getFirestore } from '../../services/getFirebase'
 
 const ItemDetailContainer = () => {
 
     const [item, setItem] = useState()
+    const [loading, setLoading] = useState(true)
     const {id} = useParams()
-   
 
     useEffect(() => {
         
-        fetch
-        .then ((res) => {
-            if(id){
-                const itemFiltrado = res.filter ((item) => item.id === parseInt(id))
-        
-                setItem(itemFiltrado)
-            }
-            else{
-                setItem(res)                
-            } 
-          
-        })
+        const dbQuery = getFirestore()
+        dbQuery.collection('items').doc(id).get()
+        .then(resp => setItem({id:resp.id, ...resp.data()}))
+        .catch(err => console.log(err))
+        .finally(()=> setLoading(false))
         
     }, [id])
 
+  
     return (
         <> 
         {
-          item && <ItemDetail key = {item[0].id} item={item[0]}/>
+           item && <ItemDetail  item={item}/>
         }
             
         </>

@@ -4,6 +4,7 @@ import { useState } from "react"
 import { useEffect } from "react"
 import ItemList from "./ItemList"
 import {useParams} from 'react-router-dom'
+import { getFirestore } from "../../services/getFirebase"
 
 
 function ItemListContainer({greeting}) {
@@ -12,37 +13,59 @@ function ItemListContainer({greeting}) {
     const [loading, setLoading] = useState(true)
     const {idCategoria} = useParams()
     
-    // const onAdd = (cantidad) => {
-    //     console.log(cantidad)
-    // }
 
     useEffect(() => {
 
         if (idCategoria) {
-            fetch
-            .then (respuesta => {
-                setProductos( respuesta.filter(prod => prod.categoria === idCategoria ))
+
+            const dbQuery = getFirestore()
+            dbQuery.collection('items').where('categoria', '==', idCategoria).get()
+            .then(resp => {
+            setProductos( resp.docs.map(producto => ({id:producto.id, ...producto.data()})))
             })
-            .catch(error => console.log(error))
-            .finally(() => setLoading(false)) 
+            .catch(err => console.log(err))
+            .finally(()=> setLoading(false))
+            
         }else{
-            fetch
-            .then (respuesta => {
-                setProductos(respuesta)
+
+            const dbQuery = getFirestore()
+            dbQuery.collection('items').get()
+            .then(resp => {
+                setProductos( resp.docs.map(producto => ({id:producto.id, ...producto.data()})))
             })
-            .catch(error => console.log(error))
-            .finally(() => setLoading(false)) 
+            .catch(err => console.log(err))
+            .finally(()=> setLoading(false))
         }
 
+        
+        
+
+
+        // if (idCategoria) {
+        //     fetch
+        //     .then (respuesta => {
+        //         setProductos( respuesta.filter(prod => prod.categoria === idCategoria ))
+        //     })
+        //     .catch(error => console.log(error))
+        //     .finally(() => setLoading(false)) 
+        // }else{
+        //     fetch
+        //     .then (respuesta => {
+        //         setProductos(respuesta)
+        //     })
+        //     .catch(error => console.log(error))
+        //     .finally(() => setLoading(false)) 
+        // }
+
     }, [idCategoria])
+
+    console.log(productosDeLaApi)
 
     return(
         
         <div style={{margin:"10px 10px", display:"flex", flexWrap:"wrap" , gap:"30px"}}>
         
         { loading ? <h2>Cargando...</h2> : <ItemList productosDeLaApi = {productosDeLaApi}/> }
-
-        {/* <ItemCount stock ={5} initial ={1} onAdd ={onAdd}/> */}
 
         </div>
     )    
