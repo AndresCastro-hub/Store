@@ -46,8 +46,12 @@ export default function CartContextProvider ({children}){
         return cartList.reduce((acum, valor)=>(acum + (valor.cantidad * valor.item.precio)), 0) 
     }
 
+    function borrarLista() {
+        cartList([])
+    }
 
-     console.log(typeof(precioTotal))
+
+
     
    
 
@@ -59,6 +63,7 @@ export default function CartContextProvider ({children}){
             iconCart,
             clearCart,
             precioTotal,
+            borrarLista
         }}>
             {children}
         </cartContext.Provider>

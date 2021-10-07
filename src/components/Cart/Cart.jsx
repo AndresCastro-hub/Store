@@ -3,12 +3,83 @@ import { useCartContext } from '../../context/cartContext'
 import Card from 'react-bootstrap/Card'
 import Button from 'react-bootstrap/Button'
 import {Link} from 'react-router-dom'
+import { getFirestore } from '../../services/getFirebase'
+import Form from 'react-bootstrap/Form'
+import firebase from 'firebase'
+import 'firebase/firestore'
+
 
 const Cart = () => {
 
-    const {cartList,removeItem,clearCart,precioTotal} = useCartContext()
+    const [formData, setFormData] = useState({
+        name : '',
+        tel: '',
+        email:''
+    })
 
-//    console.log(typeof(precioTotal))
+    const {cartList,removeItem,clearCart,precioTotal,borrarLista} = useCartContext()
+
+    const handleOnSubmit = (e) => {
+        e.preventDefault()
+
+        let orden = {}
+
+        orden.date = firebase.firestore.Timestamp.fromDate(new Date());
+        
+        orden.buyer = formData
+
+        orden.total = precioTotal();
+
+        orden.items = cartList.map(cartItem => {
+            const id = cartItem.item.id;
+            const title = cartItem.item.titulo;
+            const price = cartItem.item.precio * cartItem.cantidad;
+
+            return (id,title,price)
+        })
+
+        const db = getFirestore();
+        db.collection('orders').add(orden)
+        .then(resp =>console.log(resp.id))
+        .catch(err => console.log(err))
+        .finally(()=>setFormData({
+            name: '',
+            tel:'',
+            email:'',
+        }))
+
+         
+        const itemsToUpdate = db.collection('items').where(
+            firebase.firestore.FieldPath.documentId(), 'in', cartList.map(i=> i.item.id)
+        )
+            
+        const batch = db.batch();
+            
+        itemsToUpdate.get()
+        .then( collection=>{
+            collection.docs.forEach(docSnapshot => {
+                batch.update(docSnapshot.ref, {
+                    stock: docSnapshot.data().stock - cartList.find(item => item.item.id === docSnapshot.id).cantidad
+                })
+            })
+
+            batch.commit().then(res =>{
+                console.log('resultado batch:', res)
+            })
+        })
+
+
+    }
+
+    function handleOnChange(e){
+
+        setFormData({
+            ...formData,
+            [e.target.name] : e.target.value
+        })
+
+        console.log(formData)
+    }
     
     
     return(
@@ -38,7 +109,6 @@ const Cart = () => {
             </Card.Body>
            
         </Card>
-        
 
         )}
         
@@ -57,12 +127,18 @@ const Cart = () => {
 
         <h2 className='ml-5'>Precio Total: {precioTotal()}</h2>
 
+        <Form onSubmit = {handleOnSubmit} onChange={handleOnChange} style={{display:'flex' , flexDirection:'column' , gap:'20px', margin:'30px 50px'}} > 
+            <Form.Control type="text" value = {formData.name} name='name' placeholder="Ingrese el nombre"/>
+            <Form.Control type="text"  value = {formData.tel} name ='tel' placeholder="Ingrese el numero de telefono"/>
+            <Form.Control type="text"  value = {formData.email} name='email' placeholder="Ingrese el email"/>
+            <Form.Control type="email" name='email2' placeholder="Confirme el email"/>
+            <Button variant="primary" type='submit'>Terminar Compra</Button>      
+        </Form>
+
         <div style= {{display:'flex', alignItems:'center' , justifyContent:'center' , marginBottom:'10px'}} >
-            <Button variant="danger"  onClick={() => clearCart(cartList)}>Vaciar Carrito</Button>
+            <Button class='mt-2' variant="danger"  onClick={() => clearCart(cartList)}>Vaciar Carrito</Button>
         </div>
 
-        
-        
         </>
     
         }
