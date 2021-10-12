@@ -19,15 +19,11 @@ const ItemDetail = ({item}) => {
     const {state} = useContext(ContextApp)
 
     const onAdd = (cantidad) => {
-        console.log(cantidad)
-
+        
         addToCart(item , cantidad)
 
         setOcultarItemCount(false)
     }
-
-    console.log(addToCart)
-
 
     return (
         
@@ -38,7 +34,7 @@ const ItemDetail = ({item}) => {
             <Card.Title > {item.titulo}</Card.Title>
         <Card.Text>
             {item.descripcion}
-            <Card.Title style={{marginTop:'10px'}}> {item.precio}</Card.Title>
+            <Card.Title style={{marginTop:'10px'}}> $ {item.precio}</Card.Title>
         </Card.Text>
             
         <Row className = "justify-content-md-center">
@@ -59,12 +55,10 @@ const ItemDetail = ({item}) => {
         }
          </Row>
 
-        {/* <ItemCount stock ={5} initial ={1} onAdd ={onAdd} /> */}
-      
-
         </Card.Body>
 
         </Card> 
+
         </div>
 
         

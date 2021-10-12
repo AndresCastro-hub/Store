@@ -14,18 +14,19 @@ const  Item = ({productosDeLaApi})  => {
             <Card.Title> {productosDeLaApi.titulo}</Card.Title>
         <Card.Text>
             {productosDeLaApi.descripcion}
-            <Card.Title style={{marginTop:'10px'}}> {productosDeLaApi.precio}</Card.Title>
+            <Card.Title style={{marginTop:'10px'}}> $ {productosDeLaApi.precio}</Card.Title>
         </Card.Text>
         <Card.Text>
-            {/* <Button style={{ backgroundColor:'black', border:'none'}}>Agregar al carrito</Button> */}
         </Card.Text>
             
         <Link to = {`/item/${productosDeLaApi.id}`}>
-            <Button style={{backgroundColor:'blue'}}>Detalles</Button>
+            <Button style={{backgroundColor:'black', border:'none'}}>Comprar</Button>
         </Link>
 
         </Card.Body>
         </Card>
+
+        
     )
 }
 

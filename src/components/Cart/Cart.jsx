@@ -7,12 +7,8 @@ import { getFirestore } from '../../services/getFirebase'
 import Form from 'react-bootstrap/Form'
 import firebase from 'firebase'
 import 'firebase/firestore'
-import {useEffect} from 'react'
-
 
 const Cart = () => {
-
-
 
     const [formData, setFormData] = useState({
         name : '',
@@ -80,8 +76,6 @@ const Cart = () => {
             ...formData,
             [e.target.name] : e.target.value
         })
-
-        console.log(formData)
     }
     
     
@@ -115,7 +109,6 @@ const Cart = () => {
 
         )}
         
-
         {cartList.length === 0 ? 
           
         <div style= {{display:'flex', alignItems:'center' , justifyContent:'center' , marginBottom:'10px'}} >
@@ -148,8 +141,6 @@ const Cart = () => {
          
         </>
 
-
-       
     )
     
 }

@@ -37,29 +37,7 @@ function ItemListContainer({greeting}) {
             .finally(()=> setLoading(false))
         }
 
-        
-        
-
-
-        // if (idCategoria) {
-        //     fetch
-        //     .then (respuesta => {
-        //         setProductos( respuesta.filter(prod => prod.categoria === idCategoria ))
-        //     })
-        //     .catch(error => console.log(error))
-        //     .finally(() => setLoading(false)) 
-        // }else{
-        //     fetch
-        //     .then (respuesta => {
-        //         setProductos(respuesta)
-        //     })
-        //     .catch(error => console.log(error))
-        //     .finally(() => setLoading(false)) 
-        // }
-
     }, [idCategoria])
-
-    console.log(productosDeLaApi)
 
     return(
         
