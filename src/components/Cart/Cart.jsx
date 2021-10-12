@@ -7,9 +7,12 @@ import { getFirestore } from '../../services/getFirebase'
 import Form from 'react-bootstrap/Form'
 import firebase from 'firebase'
 import 'firebase/firestore'
+import {useEffect} from 'react'
 
 
 const Cart = () => {
+
+
 
     const [formData, setFormData] = useState({
         name : '',
@@ -35,8 +38,8 @@ const Cart = () => {
             const title = cartItem.item.titulo;
             const price = cartItem.item.precio * cartItem.cantidad;
 
-            return (id,title,price)
-        })
+            return {id,title,price}
+        })  
 
         const db = getFirestore();
         db.collection('orders').add(orden)
@@ -50,7 +53,7 @@ const Cart = () => {
 
          
         const itemsToUpdate = db.collection('items').where(
-            firebase.firestore.FieldPath.documentId(), 'in', cartList.map(i=> i.item.id)
+            firebase.firestore.FieldPath.documentId(), 'in', cartList.map(i => i.item.id)
         )
             
         const batch = db.batch();
