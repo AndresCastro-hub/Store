@@ -8,7 +8,7 @@ import {Link} from 'react-router-dom'
 
 const  Item = ({productosDeLaApi})  => {
     return (
-        <Card style={{ width: '18rem' , border:'1px solid'}} key = {productosDeLaApi.id}>
+        <Card style={{ width:'18rem', margin:'0 auto',border:'1px solid'}} key = {productosDeLaApi.id}>
         <Card.Img variant="top" src={productosDeLaApi.fotoUrl}/>
         <Card.Body style={{textAlign:"center"}}>
             <Card.Title> {productosDeLaApi.titulo}</Card.Title>

@@ -5,7 +5,6 @@ const ItemList = ({productosDeLaApi}) => {
     return (
     <>
         {productosDeLaApi.map(productosDeLaApi => <Item productosDeLaApi={productosDeLaApi}/>
-        
         )}
     </>
     )

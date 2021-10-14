@@ -20,7 +20,6 @@ const ItemDetailContainer = () => {
         
     }, [id])
 
-  
     return ( 
         loading ? <h2>Cargando...</h2> : item && <ItemDetail  item={item}/>
     )

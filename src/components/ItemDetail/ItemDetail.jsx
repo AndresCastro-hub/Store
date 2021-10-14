@@ -26,9 +26,9 @@ const ItemDetail = ({item}) => {
     }
 
     return (
-        
+       
         <div style = {{marginTop:'30px', display:'flex', alignItems:'center' , justifyContent:'center'}}>
-            <Card style={{width:'40%'}} key = {item.id}>
+            <Card style={{width:'500px'}} key = {item.id}>
         <Card.Img variant="top" src={item.fotoUrl}/>
         <Card.Body style={{textAlign:"center"}}>
             <Card.Title > {item.titulo}</Card.Title>
@@ -44,13 +44,15 @@ const ItemDetail = ({item}) => {
                 <ItemCount stock ={5} initial ={1} onAdd ={onAdd} />
             :
             <>
+            <div style ={{margin:'5px auto'}}>
                  <Link to = '/cart'>
-                    <Button variant="primary" style ={{marginTop:'20px'}}>Finalizar pedido</Button>
+                    <Button variant="primary" style ={{marginRight:'20px'}}>Finalizar pedido</Button>
                 </Link>
 
                 <Link to = '/'>
-                    <Button variant="dark" style ={{marginTop:'20px', marginLeft:'15px'}}>Seguir Comprando</Button>
+                    <Button variant="dark">Seguir Comprando</Button>
                 </Link>
+                </div>
             </>
         }
          </Row>

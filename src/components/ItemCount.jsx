@@ -33,44 +33,28 @@ const ItemCount = ({stock , initial , onAdd}) => {
         <>
         <Container>
             
-            <Row className = "justify-content-md-center">
-                <h2 style={{marginTop:'10px'}}>Productos</h2>
+            <Row className = "justify-content-center">
+                <h2 style={{margin:'0 auto'}}>Productos</h2>
             </Row>
             
-            <Row className = "justify-content-md-center">
+            <Row className = "justify-content-center">
 
-                <Button size='sm' style ={{marginRight:'10px',backgroundColor:'black' , borderStyle: 'none'}} onClick ={sumar}>+</Button>{' '}
+                <Button size='sm' style ={{marginTop: '10px' , marginRight:'10px',backgroundColor:'black' , borderStyle: 'none'}} onClick ={sumar}>+</Button>{' '}
                 
-                <label style ={{color:'black'}} size ="lg">{count}</label> <br />
+                <label style ={{marginTop: '10px', marginLeft:'5px', color:'black'}} size ="lg">{count}</label> <br />
 
-                <Button size='sm' style ={{marginLeft:'10px', backgroundColor:'black' , borderStyle: 'none'}} onClick ={restar} > - </Button> {' '} 
-
-            </Row>
-            
-            <Row className = "justify-content-md-center">
-                
-                {/* { cambiarBoton ? */}
-
-                <Button  style ={{marginTop:'10px' ,backgroundColor:'black' , borderStyle: 'none'}} onClick ={agregarCarrito}>Agregar al carrito</Button>
-                
-                
-                
-                <>
-{/*                  
-                 <Link to = '/cart'>
-                    <Button variant="primary" style ={{marginTop:'20px'}}>Finalizar pedido</Button>
-                </Link>
-
-                <Link to = '/'>
-                    <Button variant="dark" style ={{marginTop:'20px', marginLeft:'15px'}}>Seguir Comprando</Button>
-                </Link> */}
-
-                </>
-                 
-                
+                <Button size='sm' style ={{marginTop: '10px',marginLeft:'10px', backgroundColor:'black' , borderStyle: 'none'}} onClick ={restar} > - </Button> {' '} 
 
             </Row>
             
+            <Row className = "justify-content-center">
+            
+                <Button  style ={{margin:'10px auto' ,backgroundColor:'black' , borderStyle: 'none'}} onClick ={agregarCarrito}>Agregar al carrito</Button>
+          
+            <>
+            </>   
+            </Row>
+
         </Container>
         </>
     )
