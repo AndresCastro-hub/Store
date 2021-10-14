@@ -7,6 +7,7 @@ import { getFirestore } from '../../services/getFirebase'
 import Form from 'react-bootstrap/Form'
 import firebase from 'firebase'
 import 'firebase/firestore'
+import Swal from 'sweetalert2'
 
 const Cart = () => {
 
@@ -77,7 +78,16 @@ const Cart = () => {
             [e.target.name] : e.target.value
         })
     }
-    
+
+    const alerta = () => {
+        Swal.fire({
+            position: 'top-center',
+            icon: 'success',
+            title: 'La compra se realizo exitosamente',
+            showConfirmButton: false,
+            timer: 1500
+          })
+    }
     
     return(
         
@@ -121,14 +131,15 @@ const Cart = () => {
         :
         <>
 
-        <h2 className='ml-5'>Precio Total: {precioTotal()}</h2>
+        <h2 className='ml-5'>Precio Total: $ {precioTotal()}</h2>
 
         <Form onSubmit = {handleOnSubmit} onChange={handleOnChange} style={{display:'flex' , flexDirection:'column' , gap:'20px', margin:'30px 50px'}} > 
             <Form.Control type="text" value = {formData.name} name='name' placeholder="Ingrese el nombre"/>
             <Form.Control type="text"  value = {formData.tel} name ='tel' placeholder="Ingrese el numero de telefono"/>
-            <Form.Control type="text"  value = {formData.email} name='email' placeholder="Ingrese el email"/>
+            <Form.Control type="email"  value = {formData.email} name='email' placeholder="Ingrese el email"/>
             <Form.Control type="email" name='email2' placeholder="Confirme el email"/>
-            <Button variant="primary" type='submit'>Terminar Compra</Button>      
+            <Button variant="primary" type='submit' onClick={()=> alerta()} >Terminar Compra</Button>    
+
         </Form>
 
         <div style= {{display:'flex', alignItems:'center' , justifyContent:'center' , marginBottom:'10px'}} >
