@@ -17,7 +17,8 @@ https://nikestoreecommerce.netlify.app/
 
 Este proyecto requiere NodeJS para su ejecución.
 
-``` git clone https://github.com/AndresCastro-hub/Store.git
+``` 
+git clone https://github.com/AndresCastro-hub/Store.git
 cd store
 npm install
 npm start
